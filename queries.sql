@@ -1,5 +1,6 @@
 /*Queries that provide answers to the questions from all projects.*/
 
+/*Part One*/
 SELECT * FROM animals
 WHERE name LIKE '%mon';
 
@@ -23,3 +24,92 @@ WHERE name != 'Gabumon';
 
 SELECT * FROM animals
 WHERE weight_kg BETWEEN 10.4 AND 17.3;
+
+/*Part Two*/
+-- UPDATE SPECIES WITH ROLLBACK
+BEGIN;
+
+UPDATE animals
+SET species = 'unspecified';
+
+SELECT * FROM animals;
+
+ROLLBACK;
+
+-- UPDATE SPECIES WITHOUT ROLLBACK 
+BEGIN TRANSACTION;
+
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE '%mon';
+
+SELECT name, species FROM animals;
+
+UPDATE animals
+SET species = 'pokemon'
+WHERE species IS NULL;
+
+SELECT name, species FROM animals;
+
+COMMIT;
+
+SELECT * FROM animals;
+
+-- DELETE ALL RECORDS AND ROLLBACK
+BEGIN;
+
+DELETE FROM animals;
+
+SELECT * FROM animals;
+
+ROLLBACK;
+
+SELECT * FROM animals;
+
+-- UPDATE ANIMALS
+BEGIN;
+
+-- Delete all animals born after Jan 1st, 2022
+DELETE FROM animals
+WHERE date_of_birth > '2022-01-01';
+
+-- Create a savepoint for the transaction
+SAVEPOINT update_weights;
+
+-- Update all animals' weight to be their weight multiplied by -1
+UPDATE animals
+SET weight_kg = weight_kg * -1;
+
+-- Rollback to the savepoint
+ROLLBACK TO update_weights;
+
+-- Update all animals' weights that are negative to be their weight multiplied by -1
+UPDATE animals
+SET weight_kg = weight_kg * -1
+WHERE weight_kg < 0;
+
+-- Commit transaction
+COMMIT;
+
+-- Aggregates
+
+SELECT COUNT(*) FROM animals;
+
+SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+
+SELECT AVG(weight_kg) FROM animals;
+
+SELECT neutered, SUM(escape_attempts) AS total_escape_attempts
+FROM animals
+GROUP BY neutered
+ORDER BY total_escape_attempts DESC
+LIMIT 1;
+
+SELECT species, MIN(weight_kg) AS min_weight, MAX(weight_kg) AS max_weight
+FROM animals
+GROUP BY species;
+
+SELECT species, AVG(escape_attempts) AS avg_escape_attempts
+FROM animals
+WHERE EXTRACT(YEAR FROM date_of_birth) BETWEEN 1990 AND 2000
+GROUP BY species;

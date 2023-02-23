@@ -1,9 +1,3 @@
-# curriculum-databases-projects-template
-
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
-
-
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
@@ -41,9 +35,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 # 📖 [Vet Clinic] <a name="about-project"></a>
 
-> Vet clinic is a tutorial on how to create a relational database in SQL, where we create a vet clinic's database
-
-**Vet Clinic** is a relational SQL database
+**Vet Clinic** is a tutorial on how to create a relational database in SQL, where we create a vet clinic's database
 
 ## 🛠 Built With <a name="built-with"></a>
 
