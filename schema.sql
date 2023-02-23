@@ -10,7 +10,7 @@ CREATE TABLE animals (
   weight_kg DECIMAL(10,2)
 );
 
+/*Part Two*/
+
 ALTER TABLE animals
 ADD COLUMN species varchar(255);
-
-/*Part Two*/

@@ -32,6 +32,8 @@ BEGIN;
 UPDATE animals
 SET species = 'unspecified';
 
+SELECT * FROM animals;
+
 ROLLBACK;
 
 -- UPDATE SPECIES WITHOUT ROLLBACK 
@@ -41,18 +43,28 @@ UPDATE animals
 SET species = 'digimon'
 WHERE name LIKE '%mon';
 
+SELECT name, species FROM animals;
+
 UPDATE animals
 SET species = 'pokemon'
 WHERE species IS NULL;
 
+SELECT name, species FROM animals;
+
 COMMIT;
+
+SELECT * FROM animals;
 
 -- DELETE ALL RECORDS AND ROLLBACK
 BEGIN;
 
 DELETE FROM animals;
 
+SELECT * FROM animals;
+
 ROLLBACK;
+
+SELECT * FROM animals;
 
 -- UPDATE ANIMALS
 BEGIN;
