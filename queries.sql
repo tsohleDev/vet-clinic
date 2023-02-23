@@ -91,7 +91,6 @@ WHERE weight_kg < 0;
 -- Commit transaction
 COMMIT;
 
-
 -- Aggregates
 
 SELECT COUNT(*) FROM animals;
