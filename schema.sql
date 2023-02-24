@@ -50,3 +50,28 @@ REFERENCES owners(id);
 
 ALTER TABLE animals
 ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
+
+/*Part Four*/
+-- Create vets table
+CREATE TABLE vets (
+  id serial PRIMARY KEY,
+  name varchar(255),
+  age integer,
+  date_of_graduation date
+);
+
+-- Create specializations table for many-to-many relationship between vets and species
+CREATE TABLE specializations (
+  vet_id SERIAL REFERENCES vets(id),
+  species_id INTEGER REFERENCES species(id),
+  PRIMARY KEY (vet_id, species_id)
+);
+
+-- Create visits table for many-to-many relationship between vets and animals
+CREATE TABLE visits (
+  id SERIAL PRIMARY KEY,
+  animal_id INTEGER NOT NULL REFERENCES animals(id),
+  vet_id INTEGER NOT NULL REFERENCES vets(id),
+  visit_date DATE NOT NULL
+);
+
