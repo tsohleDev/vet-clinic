@@ -120,6 +120,12 @@ To run the project, run pgAdmin 4 and paste the files in your SQL query board
 - Twitter: [@twitterhandle](https://twitter.com/Realtsohle)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/tsohle)
 
+👤 **Md Tariq-ul Islam**
+
+- GitHub: [@developertariq](https://github.com/developertariq)
+- LinkedIn: [@developer-tariq](www.linkedin.com/in/developer-tariq)
+- Twitter: [@developer_tariq](https://twitter.com/developer_tariq)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
